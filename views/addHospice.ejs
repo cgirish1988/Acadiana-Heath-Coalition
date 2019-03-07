@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>View Hospice Health</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+ 
+    <header>      
+        <nav class="navbar navbar-inverse">
+            <div class="container-fluid">
+              <ul class="nav navbar-nav">
+                <li class="active"><a href="/">Home</a></li>
+                <li><a href="/getAllHospice">Hospice</a></li>
+                <li><a href="/getAllBehavioral">Behavioural Health</a></li>
+                <li><a href="/getAllAssistedLiving">Assisted Living</a></li>
+                <li><a href="/getAllAcute">Acute Facility</a></li> 
+                <% if (isAuthenticated) { %>  
+                  <% if (!isAdmin) { %>  
+                    <li><a href="/getuserInfo">User Info</a></li> 
+                  <% } %>
+                  <% if (isAdmin) { %>  
+                  <li><a href="/getPendingUsers">User Approvals</a></li> 
+                  <% } %>
+                <% } %>
+              </ul>
+              <ul>  
+                  <% if (!isAuthenticated) { %>                
+                <li><a href="/getSignup"><button class="btn btn-dark pull-right">Sign Up</button></a></li>                                                 
+                <li><a a href="/getLogin"><button class="btn btn-dark pull-right">Log In</button></a></li>                
+                <% } else { %>
+                <li><a a href="/logout"><button class="btn btn-dark pull-right">Logout</button></a></li>  
+                <% } %>
+              </ul>
+            </div>
+          </nav>
+    </header>
+
+<title>Add Hospice</title>
+</head>
+<body>
+<h2>Enter Hospice Details </h2>
+ <form method="post" action="/addHospicedetails">
+  <p>
+  <label for="Agency">Hospice Name     : 
+    </label><input type="text" name="Agency"/> <br>
+  <label for="Address">Address: 
+    </label><input type="text" name="Address"/> <br>
+  <label for="City">City: 
+    </label><input type="text" name="City"/> <br>
+  <label for="State">State: 
+    </label><input type="text" name="State"/> <br>
+  <label for="Zip">Zip: 
+    </label><input type="text" name="Zip"/> <br>
+  <label for="Phone_No1">Phone_No1: 
+    </label><input type="text" name="Phone_No1"/> <br>
+  <label for="Phone_No2">Phone_No2   : 
+    </label><input type="text" name="Phone_No2"/> <br>
+  <label for="Parish">Parish: 
+    </label><input type="text" name="Parish"/> <br>
+  <label for="Administrator_Name">Administrator_Name: 
+    </label><input type="text" name="Administrator_Name"/> <br>
+  <label for="Admin_Phone_No">Admin_Phone_No: 
+    </label><input type="text" name="Admin_Phone_No"/> <br>
+  <label for="Admin_Email">Admin_Email: 
+    </label><input type="text" name="Admin_Email"/> <br>
+  <label for="DON_Name">DON_Name   : 
+    </label><input type="text" name="DON_Name"/> <br>
+  <label for="DON_Phone_No">DON_Phone_No: 
+    </label><input type="text" name="DON_Phone_No"/> <br>
+  <label for="DON_Email">DON_Email: 
+    </label><input type="text" name="DON_Email"/> <br>
+  <label for="Medical_Director1_Name">Medical_Director1_Name: 
+    </label><input type="text" name="Medical_Director1_Name"/> <br>
+  <label for="Medical_Director1_Phone_No">Medical_Director1_Phone_No: 
+    </label><input type="text" name="Medical_Director1_Phone_No"/> <br>
+  <label for="Medical_Director1_Email">Medical_Director1_Email   : 
+    </label><input type="text" name="Medical_Director1_Email"/> <br>
+  <label for="Medical_Director2_Name">Medical_Director2_Name: 
+    </label><input type="text" name="Medical_Director2_Name"/> <br>
+  <label for="Medical_Director2_Phone_No">Medical_Director2_Phone_No: 
+    </label><input type="text" name="Medical_Director2_Phone_No"/> <br>
+  <label for="Medical_Director2_Email">Medical_Director2_Email: 
+    </label><input type="text" name="Medical_Director2_Email"/> <br>
+  <label for="Associate_Medical_Director1">Associate_Medical_Director1: 
+    </label><input type="text" name="Associate_Medical_Director1"/> <br>
+  <label for="Associate_Medical_Director2">Associate_Medical_Director2   : 
+    </label><input type="text" name="Associate_Medical_Director2"/> <br>
+  <label for="Associate_Medical_Director3">Associate_Medical_Director3: 
+    </label><input type="text" name="Associate_Medical_Director3"/> <br>
+  <label for="Website">Website: 
+    </label><input type="text" name="Website"/> <br>
+  <label for="Accept_Weekend_Admits">Accept_Weekend_Admits: 
+    </label><input type="text" name="Accept_Weekend_Admits"/> <br>
+  <label for="Evaluate_New_Referrals_on_Weekends">Evaluate_New_Referrals_on_Weekends: 
+    </label><input type="text" name="Evaluate_New_Referrals_on_Weekends"/> <br>
+  <label for="Transportation_Plan_A">Transportation_Plan_A   : 
+    </label><input type="text" name="Transportation_Plan_A"/> <br>
+  <label for="Transportation_Plan_B">Transportation_Plan_B: 
+    </label><input type="text" name="Transportation_Plan_B"/> <br>
+  <label for="Social_Worker1_Name">Social_Worker1_Name: 
+    </label><input type="text" name="Social_Worker1_Name"/> <br>
+  <label for="Social_Worker1_Phone_No">Social_Worker1_Phone_No: 
+    </label><input type="text" name="Social_Worker1_Phone_No"/> <br>
+  <label for="Social_Worker1_Email">Social_Worker1_Email: 
+    </label><input type="text" name="Social_Worker1_Email"/> <br>
+  <label for="Social_Worker2_Name">Social_Worker2_Name   : 
+    </label><input type="text" name="Social_Worker2_Name"/> <br>
+  <label for="Social_Worker2_Phone_No">Social_Worker2_Phone_No: 
+    </label><input type="text" name="Social_Worker2_Phone_No"/> <br>
+  <label for="Social_Worker2_Email">Social_Worker2_Email: 
+    </label><input type="text" name="Social_Worker2_Email"/> <br>
+  <label for="Social_Worker">Social_Worker: 
+    </label><input type="text" name="Social_Worker"/> <br>
+  <label for="Volunteers">Volunteers: 
+    </label><input type="text" name="Volunteers"/> <br>
+  <label for="Volunteers_Coordinator_Name">Volunteers_Coordinator_Name   : 
+    </label><input type="text" name="Volunteers_Coordinator_Name"/> <br>
+  <input type="submit"/>
+  </p>
+</form>
+</body>
+</html>
+

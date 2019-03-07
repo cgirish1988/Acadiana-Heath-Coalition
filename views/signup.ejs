@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title> <%= pageTitle %> </title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    </head>
+
+    <body> 
+        <nav class="navbar navbar-inverse">
+            <div class="container-fluid">
+                <ul class="nav navbar-nav">
+                    <li class="active"><a href="/">Home</a></li>                    
+                    <li><a href="/getAllHospice">Hospice</a></li>
+                    <li><a href="/getAllBehavioral">Behavioural Health</a></li>
+                    <li><a href="/getAllAssistedLiving">Assisted Living</a></li>
+                    <li><a href="/getAllAcute">Acute Facility</a></li> 
+                </ul>
+            </div>
+        </nav>
+
+        <div class="container signup-container">
+            <div class="row">
+                <div class="col-md-6 login-form-1">                        
+                    <form method="post" action="/postSignup">
+                        <!-- <div class="form-group">
+                                <input type="text" class="form-control" placeholder="Your Agency *" name="agency"/>
+                        </div>
+                        <div class="form-group">
+                                    <input type="text" class="form-control" placeholder="Agency Category *" name="category"/>
+                        </div> -->
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Your Email *" name="username"/>
+                        </div>
+                        <div class="form-group">
+                            <input type="password" class="form-control" placeholder="Your Password *" name="password"/>
+                        </div>
+                        <div class="form-group">
+                            <input type="submit" class="btnSubmit" value="SignUp" />
+                        </div>
+                        
+                    </form>
+                </div>                    
+            </div>
+        </div> 
+    </body>
+</html>

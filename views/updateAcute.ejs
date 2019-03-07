@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>View Acute</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+ 
+  <header>      
+    <nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+          <ul class="nav navbar-nav">
+            <li class="active"><a href="/">Home</a></li>
+            <li><a href="/getAllHospice">Hospice</a></li>
+            <li><a href="/getAllBehavioral">Behavioural Health</a></li>
+            <li><a href="/getAllAssistedLiving">Assisted Living</a></li>
+            <li><a href="/getAllAcute">Acute Facility</a></li> 
+            <% if (isAuthenticated) { %>  
+              <% if (!isAdmin) { %>  
+                <li><a href="/getuserInfo">User Info</a></li> 
+              <% } %>
+              <% if (isAdmin) { %>  
+              <li><a href="/getPendingUsers">User Approvals</a></li> 
+              <% } %>
+            <% } %>
+          </ul>
+          <ul>  
+              <% if (!isAuthenticated) { %>                
+            <li><a href="/getSignup"><button class="btn btn-dark pull-right">Sign Up</button></a></li>                                                 
+            <li><a a href="/getLogin"><button class="btn btn-dark pull-right">Log In</button></a></li>                
+            <% } else { %>
+            <li><a a href="/logout"><button class="btn btn-dark pull-right">Logout</button></a></li>  
+            <% } %>
+          </ul>
+        </div>
+      </nav>
+</header>
+
+ <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+          <h1 class="page-header">Acadiana Health Coalition</h1>
+          <% myAcuteInfo.forEach(function(myAcuteObj) { %>
+          <h2 class="sub-header"><%= myAcuteObj.Agency %></h2>
+          <div class="table-responsive">
+            <table class="table table-striped">
+              <thead>
+                
+              </thead>
+              <tbody>
+                 <form method="post" action="/editpostAcutedetails">
+                  Agency Name:
+                  <input type="text" name="Agency" value="<%= myAcuteObj.Agency %>">
+                  <br>
+                  Address:
+                  <input type="text" name="Address" value="<%= myAcuteObj.Address %>">
+                  <br>
+                  City:
+                  <input type="text" name="City" value="<%= myAcuteObj.City %>">
+                  <br>
+                  State:
+                  <input type="text" name="State" value="<%= myAcuteObj.State %>">
+                  <br>
+                  Zip:
+                  <input type="text" name="Zip" value="<%= myAcuteObj.Zip %>">
+                  <br>
+                  Phone_No1:
+                  <input type="text" name="Phone_No1" value="<%= myAcuteObj.Phone_No1 %>">
+                  <br>
+                  Phone_No2:
+                  <input type="text" name="Phone_No2" value="<%= myAcuteObj.Phone_No2 %>">
+                  <br>
+                  Parish:
+                  <input type="text" name="Parish" value="<%= myAcuteObj.Parish %>">
+                  <br>                 
+                  Hosp_Info_Location1: 
+                  <input type="text" name="Hosp_Info_Location1" value="<%= myAcuteObj.Hosp_Info_Location1 %>"> 
+                  <br>
+                  Hosp_Info_Supervisor1: 
+                  <input type="text" name="Hosp_Info_Supervisor1" value="<%= myAcuteObj.Hosp_Info_Supervisor1 %>">
+                  <br>
+                  Hosp_Info_Phone1: 
+                  <input type="text" name="Hosp_Info_Phone1" value="<%= myAcuteObj.Hosp_Info_Phone1 %>"> 
+                  <br>
+                  Hosp_Info_Fax1: 
+                  <input type="text" name="Hosp_Info_Fax1" value="<%= myAcuteObj.Hosp_Info_Fax1 %>"> 
+                  <br>
+                  Hosp_Info_Location2: 
+                  <input type="text" name="Hosp_Info_Location2" value="<%= myAcuteObj.Hosp_Info_Location2 %>"> 
+                  <br>
+                  Hosp_Info_Supervisor2: 
+                  <input type="text" name="Hosp_Info_Supervisor2" value="<%= myAcuteObj.Hosp_Info_Supervisor2 %>"> 
+                  <br>
+                  Hosp_Info_Phone2: 
+                  <input type="text" name="Hosp_Info_Phone2" value="<%= myAcuteObj.Hosp_Info_Phone2 %>"> 
+                  <br>
+                  Hosp_Info_Fax2: 
+                  <input type="text" name="Hosp_Info_Fax2" value="<%= myAcuteObj.Hosp_Info_Fax2 %>"> 
+                  <br>
+                  Hosp_Info_Location3: 
+                  <input type="text" name="Hosp_Info_Location3" value="<%= myAcuteObj.Hosp_Info_Location3 %>"> 
+                  <br>
+                  Hosp_Info_Supervisor3: 
+                  <input type="text" name="Hosp_Info_Supervisor3" value="<%= myAcuteObj.Hosp_Info_Supervisor3 %>"> 
+                  <br>
+                  Hosp_Info_Phone3: 
+                  <input type="text" name="Hosp_Info_Phone3" value="<%= myAcuteObj.Hosp_Info_Phone3 %>"> 
+                  <br>
+                  Hosp_Info_Fax3: 
+                  <input type="text" name="Hosp_Info_Fax3" value="<%= myAcuteObj.Hosp_Info_Fax3 %>"> 
+                  <br>
+                  Hosp_Info_Location4: 
+                  <input type="text" name="Hosp_Info_Location4" value="<%= myAcuteObj.Hosp_Info_Location4 %>"> 
+                  <br>
+                  Hosp_Info_Supervisor4: 
+                  <input type="text" name="Hosp_Info_Supervisor4" value="<%= myAcuteObj.Hosp_Info_Supervisor4 %>"> 
+                  <br>
+                  Hosp_Info_Phone4: 
+                  <input type="text" name="Hosp_Info_Phone4" value="<%= myAcuteObj.Hosp_Info_Phone4 %>"> 
+                  <br>
+                  Hosp_Info_Fax4: 
+                  <input type="text" name="Hosp_Info_Fax4" value="<%= myAcuteObj.Hosp_Info_Fax4 %>"> 
+                  <br>
+                  Hosp_Info_Location5: 
+                  <input type="text" name="Hosp_Info_Location5" value="<%= myAcuteObj.Hosp_Info_Location5 %>"> 
+                  <br>
+                  Hosp_Info_Supervisor5: 
+                  <input type="text" name="Hosp_Info_Supervisor5" value="<%= myAcuteObj.Hosp_Info_Supervisor5 %>"> 
+                  <br>
+                  Hosp_Info_Phone5: 
+                  <input type="text" name="Hosp_Info_Phone5" value="<%= myAcuteObj.Hosp_Info_Phone5 %>"> 
+                  <br>
+                  Hosp_Info_Fax5: 
+                  <input type="text" name="Hosp_Info_Fax5" value="<%= myAcuteObj.Hosp_Info_Fax5 %>"> 
+                  <br>
+                  Admin_Location1: 
+                  <input type="text" name="Admin_Location1" value="<%= myAcuteObj.Admin_Location1 %>"> 
+                  <br>
+                  Admin_Name1: 
+                  <input type="text" name="Admin_Name1" value="<%= myAcuteObj.Admin_Name1 %>"> 
+                  <br>
+                  Admin_Phone1: 
+                  <input type="text" name="Admin_Phone1" value="<%= myAcuteObj.Admin_Phone1 %>"> 
+                  <br>
+                  Admin_Fax1: 
+                  <input type="text" name="Admin_Fax1" value="<%= myAcuteObj.Admin_Fax1 %>"> 
+                  <br>
+                  Admin_Location2: 
+                  <input type="text" name="Admin_Location2" value="<%= myAcuteObj.Admin_Location2 %>"> 
+                  <br>
+                  Admin_Name2: 
+                  <input type="text" name="Admin_Name2" value="<%= myAcuteObj.Admin_Name2 %>"> 
+                  <br>
+                  Admin_Phone2: 
+                  <input type="text" name="Admin_Phone2" value="<%= myAcuteObj.Admin_Phone2 %>"> 
+                  <br>
+                  Admin_Fax2: 
+                  <input type="text" name="Admin_Fax2" value="<%= myAcuteObj.Admin_Fax2 %>"> 
+                  <br>
+                  Admin_Location3: 
+                  <input type="text" name="Admin_Location3" value="<%= myAcuteObj.Admin_Location3 %>"> 
+                  <br>
+                  Admin_Name3 
+                  <input type="text" name="Admin_Name3" value="<%= myAcuteObj.Admin_Name3 %>"> 
+                  <br>
+                  Admin_Phone3: 
+                  <input type="text" name="Admin_Phone3" value="<%= myAcuteObj.Admin_Phone3 %>"> 
+                  <br>
+                  Admin_Fax3: 
+                  <input type="text" name="Admin_Fax3" value="<%= myAcuteObj.Admin_Fax3 %>"> 
+                  <br>
+                  Admin_Location4: 
+                  <input type="text" name="Admin_Location4" value="<%= myAcuteObj.Admin_Location4 %>"> 
+                  <br>
+                  Admin_Name4: 
+                  <input type="text" name="Admin_Name4" value="<%= myAcuteObj.Admin_Name4 %>">
+                  <br>
+                  Admin_Phone4: 
+                  <input type="text" name="Admin_Phone4" value="<%= myAcuteObj.Admin_Phone4 %>"> 
+                  <br>
+                  Admin_Fax4: 
+                  <input type="text" name="Admin_Fax4" value="<%= myAcuteObj.Admin_Fax4 %>"> 
+                  <br>
+                  Admin_Location5: 
+                  <input type="text" name="Admin_Location5" value="<%= myAcuteObj.Admin_Location5 %>"> 
+                  <br>
+                  Admin_Name5: 
+                  <input type="text" name="Admin_Name5" value="<%= myAcuteObj.Admin_Name5 %>"> 
+                  <br>
+                  Admin_Phone5: 
+                  <input type="text" name="Admin_Phone5" value="<%= myAcuteObj.Admin_Phone5 %>"> 
+                  <br>
+                  Admin_Fax5: 
+                  <input type="text" name="Admin_Fax5" value="<%= myAcuteObj.Admin_Fax5 %>"> 
+                  <br>
+                  Case_Mgt_Dept_Location1: 
+                  <input type="text" name="Case_Mgt_Dept_Location1" value="<%= myAcuteObj.Case_Mgt_Dept_Location1 %>"> 
+                  <br>
+                  Case_Mgt_Dept_Name1: 
+                  <input type="text" name="Case_Mgt_Dept_Name1" value="<%= myAcuteObj.Case_Mgt_Dept_Name1 %>"> 
+                  <br>
+                  Case_Mgt_Dept_Phone1: 
+                  <input type="text" name="Case_Mgt_Dept_Phone1" value="<%= myAcuteObj.Case_Mgt_Dept_Phone1 %>"> 
+                  <br>
+                  Case_Mgt_Dept_Fax1: 
+                  <input type="text" name="Case_Mgt_Dept_Fax1" value="<%= myAcuteObj.Case_Mgt_Dept_Fax1 %>"> 
+                  <br>
+                  Case_Mgt_Dept_Location2: 
+                  <input type="text" name="Case_Mgt_Dept_Location2" value="<%= myAcuteObj.Case_Mgt_Dept_Location2 %>"> 
+                  <br>
+                  Case_Mgt_Dept_Name2: 
+                  <input type="text" name="Case_Mgt_Dept_Name2" value="<%= myAcuteObj.Case_Mgt_Dept_Name2 %>"> 
+                  <br>
+                  Case_Mgt_Dept_Phone2: 
+                  <input type="text" name="Case_Mgt_Dept_Phone2" value="<%= myAcuteObj.Case_Mgt_Dept_Phone2 %>"> 
+                  <br>
+                  Case_Mgt_Dept_Fax2: 
+                  <input type="text" name="Case_Mgt_Dept_Fax2" value="<%= myAcuteObj.Case_Mgt_Dept_Fax2 %>"> 
+                  <br>
+                  Case_Mgt_Dept_Location3: 
+                  <input type="text" name="Case_Mgt_Dept_Location3" value="<%= myAcuteObj.Case_Mgt_Dept_Location3 %>"> 
+                  <br>
+                  Case_Mgt_Dept_Name3: 
+                  <input type="text" name="Case_Mgt_Dept_Name3" value="<%= myAcuteObj.Case_Mgt_Dept_Name3 %>"> 
+                  <br>
+                  Case_Mgt_Dept_Phone3: 
+                  <input type="text" name="Case_Mgt_Dept_Phone3" value="<%= myAcuteObj.Case_Mgt_Dept_Phone3 %>"> 
+                  <br>
+                  Case_Mgt_Dept_Fax3: 
+                  <input type="text" name="Case_Mgt_Dept_Fax3" value="<%= myAcuteObj.Case_Mgt_Dept_Fax3 %>"> 
+                  <br>
+                  Case_Mgt_Dept_Location4: 
+                  <input type="text" name="Case_Mgt_Dept_Location4" value="<%= myAcuteObj.Case_Mgt_Dept_Location4 %>"> 
+                  <br>
+                  Case_Mgt_Dept_Name4: 
+                  <input type="text" name="Case_Mgt_Dept_Name4" value="<%= myAcuteObj.Case_Mgt_Dept_Name4 %>"> 
+                  <br>
+                  Case_Mgt_Dept_Phone4: 
+                  <input type="text" name="Case_Mgt_Dept_Phone4" value="<%= myAcuteObj.Case_Mgt_Dept_Phone4 %>"> 
+                  <br>
+                  Case_Mgt_Dept_Fax4: 
+                  <input type="text" name="Case_Mgt_Dept_Fax4" value="<%= myAcuteObj.Case_Mgt_Dept_Fax4 %>">
+                  <br>
+                  Facility_Serv_Emergency_Department: 
+                  <input type="radio" name="Facility_Serv_Emergency_Department" value="<%= myAcuteObj.Facility_Serv_Emergency_Department %>"> 
+                  <br>
+                  Facility_Serv_Trauma_Center: 
+                  <input type="radio" name="Facility_Serv_Trauma_Center" value="<%= myAcuteObj.Facility_Serv_Trauma_Center %>"> 
+                  <br>
+                  Facility_Serv_Cardiac_ICU: 
+                  <input type="radio" name="Facility_Serv_Cardiac_ICU" value="<%= myAcuteObj.Facility_Serv_Cardiac_ICU %>"> 
+                  <br>
+                  Facility_Serv_Neurology_ICU: 
+                  <input type="radio" name="Facility_Serv_Neurology_ICU" value="<%= myAcuteObj.Facility_Serv_Neurology_ICU %>"> 
+                  <br>
+                  Facility_Serv_Surgical_ICU: 
+                  <input type="radio" name="Facility_Serv_Surgical_ICU" value="<%= myAcuteObj.Facility_Serv_Surgical_ICU %>"> 
+                  <br>
+                  Facility_Serv_Telemetry_Unit: 
+                  <input type="radio" name="Facility_Serv_Telemetry_Unit" value="<%= myAcuteObj.Facility_Serv_Telemetry_Unit %>"> 
+                  <br>
+                  Facility_Serv_Surgery_Department: 
+                  <input type="radio" name="Facility_Serv_Surgery_Department" value="<%= myAcuteObj.Facility_Serv_Surgery_Department %>"> 
+                  <br>
+                  Facility_Serv_Bariatric_Services: 
+                  <input type="radio" name="Facility_Serv_Bariatric_Services" value="<%= myAcuteObj.Facility_Serv_Bariatric_Services %>"> 
+                  <br>
+                  Facility_Serv_Hyperbaric_Unit: 
+                  <input type="radio" name="Facility_Serv_Hyperbaric_Unit" value="<%= myAcuteObj.Facility_Serv_Hyperbaric_Unit %>"> 
+                  <br>
+                  Facility_Serv_Wound_Care_Clinic: 
+                  <input type="radio" name="Facility_Serv_Wound_Care_Clinic" value="<%= myAcuteObj.Facility_Serv_Wound_Care_Clinic %>"> 
+                  <br>
+                  Facility_Serv_Orthopedics: 
+                  <input type="radio" name="Facility_Serv_Orthopedics" value="<%= myAcuteObj.Facility_Serv_Orthopedics %>"> 
+                  <br>
+                  Facility_Serv_Neurological_Services: 
+                  <input type="radio" name="Facility_Serv_Neurological_Services" value="<%= myAcuteObj.Facility_Serv_Neurological_Services %>"> 
+                  <br>
+                  Facility_Serv_Oncology_Services: 
+                  <input type="radio" name="Facility_Serv_Oncology_Services" value="<%= myAcuteObj.Facility_Serv_Oncology_Services %>"> 
+                  <br>
+                  Facility_Serv_Outpatient_Oncology_Services: 
+                  <input type="radio" name="Facility_Serv_Outpatient_Oncology_Services" value="<%= myAcuteObj.Facility_Serv_Outpatient_Oncology_Services %>"> 
+                  <br>
+                  Facility_Serv_Radiation_Therapy: 
+                  <input type="radio" name="Facility_Serv_Radiation_Therapy" value="<%= myAcuteObj.Facility_Serv_Radiation_Therapy %>"> 
+                  <br>
+                  Facility_Serv_Burn_Unit: 
+                  <input type="radio" name="Facility_Serv_Burn_Unit" value="<%= myAcuteObj.Facility_Serv_Burn_Unit %>"> 
+                  <br>
+                  acility_Serv_Outpatient_Burn_Clinic: 
+                  <input type="radio" name="Facility_Serv_Outpatient_Burn_Clinic" value="<%= myAcuteObj.Facility_Serv_Outpatient_Burn_Clinic %>"> 
+                  <br>
+                  Facility_Serv_Acute_Inpatient_Rehab_Unit: 
+                  <input type="radio" name="Facility_Serv_Acute_Inpatient_Rehab_Unit" value="<%= myAcuteObj.Facility_Serv_Acute_Inpatient_Rehab_Unit %>"> 
+                  <br>
+                  Facility_Serv_Outpatient_Physical_Therapy: 
+                  <input type="radio" name="Facility_Serv_Outpatient_Physical_Therapy" value="<%= myAcuteObj.Facility_Serv_Outpatient_Physical_Therapy %>"> 
+                  <br>
+                  Facility_Serv_Obstetrics_Services: 
+                  <input type="radio" name="Facility_Serv_Obstetrics_Services" value="<%= myAcuteObj.Facility_Serv_Obstetrics_Services %>"> 
+                  <br>
+                  Facility_Serv_Gynecology_Services: 
+                  <input type="radio" name="Facility_Serv_Gynecology_Services" value="<%= myAcuteObj.Facility_Serv_Gynecology_Services %>"> 
+                  <br>
+                  Facility_Serv_Pediatrics: 
+                  <input type="radio" name="Facility_Serv_Pediatrics" value="<%= myAcuteObj.Facility_Serv_Pediatrics %>"> 
+                  <br>
+                  Facility_Serv_Pediatric_Trauma_Center: 
+                  <input type="radio" name="Facility_Serv_Pediatric_Trauma_Center" value="<%= myAcuteObj.Facility_Serv_Pediatric_Trauma_Center %>"> 
+                  <br>
+                  Facility_Serv_Pediatric_ICU: 
+                  <input type="radio" name="Facility_Serv_Pediatric_ICU" value="<%= myAcuteObj.Facility_Serv_Pediatric_ICU %>"> 
+                  <br>
+                  Facility_Serv_Neonatal_Services: 
+                  <input type="radio" name="Facility_Serv_Neonatal_Services" value="<%= myAcuteObj.Facility_Serv_Neonatal_Services %>"> 
+                  <br>
+                  Facility_Serv_Neonatal_ICU: 
+                  <input type="radio" name="Facility_Serv_Neonatal_ICU" value="<%= myAcuteObj.Facility_Serv_Neonatal_ICU %>"> 
+                  <br>
+                  Facility_Serv_Psychiatric_Inpatient_Services: 
+                  <input type="radio" name="Facility_Serv_Psychiatric_Inpatient_Services" value="<%= myAcuteObj.Facility_Serv_Psychiatric_Inpatient_Services %>"> 
+                  <br>
+                  Facility_Serv_Psychiatric_Outpatient_Services: 
+                  <input type="radio" name="Facility_Serv_Psychiatric_Outpatient_Services" value="<%= myAcuteObj.Facility_Serv_Psychiatric_Outpatient_Services %>"> 
+                  <br>
+                  Facility_Serv_Outpatient_Cardiac_Rehab: 
+                  <input type="radio" name="Facility_Serv_Outpatient_Cardiac_Rehab" value="<%= myAcuteObj.Facility_Serv_Outpatient_Cardiac_Rehab %>"> 
+                  <br>
+                  Facility_Serv_Swing_Bed_SNF_Services: 
+                  <input type="radio" name="Facility_Serv_Swing_Bed_SNF_Services"  value="<%= myAcuteObj.Facility_Serv_Swing_Bed_SNF_Services %>"> 
+                  <br>
+                  <input type="submit" value="Update!">
+                  </form> 
+            <% }); %>
+              </tbody>
+            </table>
+          </div>
+        </div>
+ 
+</body>
+</html>

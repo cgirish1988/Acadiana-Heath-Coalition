@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>View Assisted Living Health</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+ 
+  <header>      
+    <nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+          <ul class="nav navbar-nav">
+            <li class="active"><a href="/">Home</a></li>
+            <li><a href="/getAllHospice">Hospice</a></li>
+            <li><a href="/getAllBehavioral">Behavioural Health</a></li>
+            <li><a href="/getAllAssistedLiving">Assisted Living</a></li>
+            <li><a href="/getAllAcute">Acute Facility</a></li> 
+            <% if (isAuthenticated) { %>  
+              <% if (!isAdmin) { %>  
+                <li><a href="/getuserInfo">User Info</a></li> 
+              <% } %>
+              <% if (isAdmin) { %>  
+              <li><a href="/getPendingUsers">User Approvals</a></li> 
+              <% } %>
+            <% } %>
+          </ul>
+          <ul>  
+              <% if (!isAuthenticated) { %>                
+            <li><a href="/getSignup"><button class="btn btn-dark pull-right">Sign Up</button></a></li>                                                 
+            <li><a a href="/getLogin"><button class="btn btn-dark pull-right">Log In</button></a></li>                
+            <% } else { %>
+            <li><a a href="/logout"><button class="btn btn-dark pull-right">Logout</button></a></li>  
+            <% } %>
+          </ul>
+        </div>
+      </nav>
+</header>
+
+ <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+          <h1 class="page-header">Acadiana Health Coalition</h1>
+          <% myAssistedLivingInfo.forEach(function(myAssistedLivingObj) { %> 
+          <h2 class="sub-header"><%= myAssistedLivingObj.Agency %></h2>
+                
+            <div class="table-responsive">
+                <table class="table table-striped">
+                  <tbody>
+                     <form method="post" action="editpostAssistedLivingdetails">
+                        <input type="hidden" value= <%= myAssistedLivingObj._id %> name="agencyid">
+                      Address:
+                      <input type="text" name="Address" value="<%= myAssistedLivingObj.Address %>">
+                      <br>
+                      City:
+                      <input type="text" name="City"  value="<%= myAssistedLivingObj.City %>"">
+                      <br>
+                      State:
+                      <input type="text" name="State" value="<%= myAssistedLivingObj.State %>"">
+                      <br>
+                      Zip:
+                      <input type="text" name="Zip" value="<%= myAssistedLivingObj.Zip %>"">
+                      <br>
+                      Phone_No1:
+                      <input type="text" name="Phone_No1" value="<%= myAssistedLivingObj.Phone_No1 %>"">
+                      <br>
+                      Phone_No2:
+                      <input type="text" name="Phone_No2" value="<%= myAssistedLivingObj.Phone_No2 %>"">
+                      <br>
+                      Parish:
+                      <input type="text" name="Parish" value="<%= myAssistedLivingObj.Parish %>"">
+                      <br>                  
+                      Administrator_Name:
+                      <input type="text" name="Administrator_Name" value="<%= myAssistedLivingObj.Administrator_Name %>"">
+                      <br>
+                      Admin_Phone_No:
+                      <input type="text" name="Admin_Phone_No" value="<%= myAssistedLivingObj.Admin_Phone_No %>"">
+                      <br>
+                      Admin_Email:
+                      <input type="text" name="Admin_Email" value="<%= myAssistedLivingObj.Admin_Email %>"">
+                      <br>
+                      Wellness_Coordinator1_Name:
+                      <input type="text" name="Wellness_Coordinator1_Name" value="<%= myAssistedLivingObj.Wellness_Coordinator1_Name %>"">
+                      <br>
+                      Wellness_Coordinator1_Phone_No:
+                      <input type="text" name="Wellness_Coordinator1_Phone_No" value="<%= myAssistedLivingObj.Wellness_Coordinator1_Phone_No %>"">
+                      <br>
+                      Wellness_Coordinator1_Email:
+                      <input type="text" name="Wellness_Coordinator1_Email" value="<%= myAssistedLivingObj.Wellness_Coordinator1_Email %>"">
+                      <br>
+                      Medical_Director1_Name:
+                      <input type="text" name="Medical_Director1_Name" value="<%= myAssistedLivingObj.Medical_Director1_Name %>"">
+                      <br>
+                      Medical_Director1_Phone_No:
+                      <input type="text" name="Medical_Director1_Phone_No" value="<%= myAssistedLivingObj.Medical_Director1_Phone_No %>"">
+                      <br>
+                      Medical_Director1_Email:
+                      <input type="text" name="Medical_Director1_Email" value="<%= myAssistedLivingObj.Medical_Director1_Email %>"">
+                      <br>
+                      Medical_Director2_Name:
+                      <input type="text" name="Medical_Director2_Name" value="<%= myAssistedLivingObj.Medical_Director2_Name %>"">
+                      <br>
+                      Medical_Director2_Phone_No:
+                      <input type="text" name="Medical_Director2_Phone_No" value="<%= myAssistedLivingObj.Medical_Director2_Phone_No %>"">
+                      <br>
+                      Medical_Director2_Email:
+                      <input type="text" name="Medical_Director2_Email" value="<%= myAssistedLivingObj.Medical_Director2_Email %>"">
+                      <br>
+                      DON:
+                      <input type="text" name="DON" value="<%= myAssistedLivingObj.DON %>"">
+                      <br>
+                      Website:
+                      <input type="text" name="Website" value="<%= myAssistedLivingObj.Website %>"">
+                      <br>
+                      Transportation_PlanA:
+                      <input type="text" name="Transportation_PlanA" value="<%= myAssistedLivingObj.Transportation_PlanA %>"">
+                      <br>
+                      Transportation_PlanB:
+                      <input type="text" name="Transportation_PlanB" value="<%= myAssistedLivingObj.Transportation_PlanB %>"">
+                      <br>
+                      Required_Info_for_Admittance1:
+                      <input type="text" name="Required_Info_for_Admittance1" value="<%= myAssistedLivingObj.Required_Info_for_Admittance1 %>"">
+                      <br>
+                      Required_Info_for_Admittance2:
+                      <input type="text" name="Required_Info_for_Admittance2" value="<%= myAssistedLivingObj.Required_Info_for_Admittance2 %>"">
+                      <br>
+                      Required_Info_for_Admittance3:
+                      <input type="text" name="Required_Info_for_Admittance3" value="<%= myAssistedLivingObj.Required_Info_for_Admittance3 %>"">
+                      <br>
+                      Required_Info_for_Admittance4:
+                      <input type="text" name="Required_Info_for_Admittance4" value="<%= myAssistedLivingObj.Required_Info_for_Admittance4 %>"">
+                      <br>
+                      Required_Info_for_Admittance5:
+                      <input type="text" name="Required_Info_for_Admittance5" value="<%= myAssistedLivingObj.Required_Info_for_Admittance5 %>"">
+                      <br>
+                      Required_Info_for_Admittance6:
+                      <input type="text" name="Required_Info_for_Admittance6" value="<%= myAssistedLivingObj.Required_Info_for_Admittance6 %>"">
+                      <br>
+                      Required_Info_for_Admittance7:
+                      <input type="text" name="Required_Info_for_Admittance7" value="<%= myAssistedLivingObj.Required_Info_for_Admittance7 %>"">
+                      <br>
+                      Required_Info_for_Admittance8:
+                      <input type="text" name="Required_Info_for_Admittance8" value="<%= myAssistedLivingObj.Required_Info_for_Admittance8 %>"">
+                      <br>
+                      Required_Info_for_Admittance9:
+                      <input type="text" name="Required_Info_for_Admittance9" value="<%= myAssistedLivingObj.Required_Info_for_Admittance9 %>"">
+                      <br>
+                      Required_Info_for_Admittance10:
+                      <input type="text" name="Required_Info_for_Admittance10" value="<%= myAssistedLivingObj.Required_Info_for_Admittance10 %>"">
+                      <br>
+                      Required_Info_for_Admittance11:
+                      <input type="text" name="Required_Info_for_Admittance11" value="<%= myAssistedLivingObj.Required_Info_for_Admittance11 %>"">
+                      Required_Info_for_Admittance12:
+                      <input type="text" name="Required_Info_for_Admittance12" value="<%= myAssistedLivingObj.Required_Info_for_Admittance12 %>"">
+                      <br>
+                      Office_HoursOffice_Hours:
+                      <input type="text" name="Office_Hours" value="<%= myAssistedLivingObj.Office_Hours %>"">
+                      <br>
+                      Specialized_Services:
+                      <input type="text" name="Specialized_Services" value="<%= myAssistedLivingObj.Specialized_Services %>"">
+                      <br>
+                      Specialized_Services2:
+                      <input type="text" name="Specialized_Services2" value="<%= myAssistedLivingObj.Specialized_Services2 %>"">
+                      <br>
+                      Specialized_Services3:
+                      <input type="text" name="Specialized_Services3" value="<%= myAssistedLivingObj.Specialized_Services3 %>"">
+                      <br>
+                      Specialized_Services4:
+                      <input type="text" name="Specialized_Services4" value="<%= myAssistedLivingObj.Specialized_Services4 %>"">
+                      <br>
+    
+                      <input type="submit" value="Update!">
+                      </form> 
+                
+                  </tbody>
+                </table>
+              </div>  
+          <% }); %>
+  </div>
+</body>
+</html>

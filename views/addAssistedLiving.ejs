@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>View Assisted Living</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+ 
+        <header>      
+                <nav class="navbar navbar-inverse">
+                    <div class="container-fluid">
+                      <ul class="nav navbar-nav">
+                        <li class="active"><a href="/">Home</a></li>
+                        <li><a href="/getAllHospice">Hospice</a></li>
+                        <li><a href="/getAllBehavioral">Behavioural Health</a></li>
+                        <li><a href="/getAllAssistedLiving">Assisted Living</a></li>
+                        <li><a href="/getAllAcute">Acute Facility</a></li> 
+                        <% if (isAuthenticated) { %>  
+                          <% if (!isAdmin) { %>  
+                            <li><a href="/getuserInfo">User Info</a></li> 
+                          <% } %>
+                          <% if (isAdmin) { %>  
+                          <li><a href="/getPendingUsers">User Approvals</a></li> 
+                          <% } %>
+                        <% } %>
+                      </ul>
+                      <ul>  
+                          <% if (!isAuthenticated) { %>                
+                        <li><a href="/getSignup"><button class="btn btn-dark pull-right">Sign Up</button></a></li>                                                 
+                        <li><a a href="/getLogin"><button class="btn btn-dark pull-right">Log In</button></a></li>                
+                        <% } else { %>
+                        <li><a a href="/logout"><button class="btn btn-dark pull-right">Logout</button></a></li>  
+                        <% } %>
+                      </ul>
+                    </div>
+                  </nav>
+            </header>
+
+
+<title>Add Assisted Living</title>
+</head>
+<body>
+<h2>Enter Assisted Living Details </h2>
+ <form method="post" action="/addAssistedLivingdetails">
+  <p>
+  <label for="Agency">Assisted Living Name: 
+    </label><input type="text" name="Agency"/> <br>
+  <label for="Address">Address: 
+    </label><input type="text" name="Address"/> <br>
+  <label for="City">City: 
+    </label><input type="text" name="City"/> <br>
+  <label for="State">State: 
+    </label><input type="text" name="State"/> <br>
+  <label for="Zip">Zip: 
+    </label><input type="text" name="Zip"/> <br>
+  <label for="Phone_No1">Phone_No1: 
+    </label><input type="text" name="Phone_No1"/> <br>
+  <label for="Phone_No2">Phone_No2   : 
+    </label><input type="text" name="Phone_No2"/> <br>
+  <label for="Parish">Parish: 
+    </label><input type="text" name="Parish"/> <br>
+  <label for="Administrator_Name">Administrator_Name: 
+    </label><input type="text" name="Administrator_Name"/> <br>
+  <label for="Admin_Phone_No">Admin_Phone_No: 
+    </label><input type="text" name="Admin_Phone_No"/> <br>
+  <label for="Admin_Email">Admin_Email: 
+    </label><input type="text" name="Admin_Email"/> <br>
+      <label for="Wellness_Coordinator1_Name">Wellness_Coordinator1_Name: 
+    </label><input type="text" name="Wellness_Coordinator1_Name"/> <br>
+  <label for="Wellness_Coordinator1_Phone_No">Wellness_Coordinator1_Phone_No: 
+    </label><input type="text" name="Wellness_Coordinator1_Phone_No"/> <br>
+  <label for="Wellness_Coordinator1_Email">Wellness_Coordinator1_Email: 
+    </label><input type="text" name="Wellness_Coordinator1_Email"/> <br>
+  <label for="Medical_Director1_Name">Medical_Director1_Name: 
+    </label><input type="text" name="Medical_Director1_Name"/> <br>
+  <label for="Medical_Director1_Phone_No">Medical_Director1_Phone_No: 
+    </label><input type="text" name="Medical_Director1_Phone_No"/> <br>
+  <label for="Medical_Director1_Email">Medical_Director1_Email   : 
+    </label><input type="text" name="Medical_Director1_Email"/> <br>
+  <label for="Medical_Director2_Name">Medical_Director2_Name: 
+    </label><input type="text" name="Medical_Director2_Name"/> <br>
+  <label for="Medical_Director2_Phone_No">Medical_Director2_Phone_No: 
+    </label><input type="text" name="Medical_Director2_Phone_No"/> <br>
+  <label for="Medical_Director2_Email">Medical_Director2_Email: 
+    </label><input type="text" name="Medical_Director2_Email"/> <br>
+  <label for="DON">DON: 
+    </label><input type="text" name="DON"/> <br>
+  <label for="Website">Website: 
+    </label><input type="text" name="Website"/> <br>
+  <label for="Transportation_Plan_A">Transportation_Plan_A   : 
+    </label><input type="text" name="Transportation_Plan_A"/> <br>
+  <label for="Transportation_Plan_B">Transportation_Plan_B: 
+    </label><input type="text" name="Transportation_Plan_B"/> <br>
+  <label for="Required_Info_for_Admittance1">Required_Info_for_Admittance1: 
+    </label><input type="text" name="Required_Info_for_Admittance1"/> <br>
+  <label for="Required_Info_for_Admittance2">Required_Info_for_Admittance2: 
+    </label><input type="text" name="Required_Info_for_Admittance2"/> <br>
+  <label for="Required_Info_for_Admittance3">Required_Info_for_Admittance3: 
+    </label><input type="text" name="Required_Info_for_Admittance3"/> <br>
+  <label for="Required_Info_for_Admittance4">Required_Info_for_Admittance4: 
+    </label><input type="text" name="Required_Info_for_Admittance4"/> <br>
+  <label for="Required_Info_for_Admittance5">Required_Info_for_Admittance5: 
+    </label><input type="text" name="Required_Info_for_Admittance5"/> <br>
+  <label for="Required_Info_for_Admittance6">Required_Info_for_Admittance6: 
+    </label><input type="text" name="Required_Info_for_Admittance6"/> <br>
+  <label for="Required_Info_for_Admittance7">Required_Info_for_Admittance7: 
+    </label><input type="text" name="Required_Info_for_Admittance7"/> <br>
+  <label for="Required_Info_for_Admittance8">Required_Info_for_Admittance8: 
+    </label><input type="text" name="Required_Info_for_Admittance8"/> <br>
+  <label for="Required_Info_for_Admittance9">Required_Info_for_Admittance9: 
+    </label><input type="text" name="Required_Info_for_Admittance9"/> <br>
+  <label for="Required_Info_for_Admittance10">Required_Info_for_Admittance10: 
+    </label><input type="text" name="Required_Info_for_Admittance10"/> <br>
+  <label for="Required_Info_for_Admittance11">Required_Info_for_Admittance11: 
+    </label><input type="text" name="Required_Info_for_Admittance11"/> <br>
+  <label for="Required_Info_for_Admittance12">Required_Info_for_Admittance12: 
+    </label><input type="text" name="Required_Info_for_Admittance12"/> <br>
+  <label for="Office_Hours">Office_Hours: 
+    </label><input type="text" name="Office_Hours"/> <br>
+  <label for="Specialized_Services">Specialized_Services: 
+    </label><input type="text" name="Specialized_Services"/> <br>
+  <label for="Specialized_Services2">Specialized_Services2: 
+    </label><input type="text" name="Specialized_Services2"/> <br>
+  <label for="Specialized_Services3">Specialized_Services3: 
+    </label><input type="text" name="Specialized_Services3"/> <br>
+  <label for="Specialized_Services4">Specialized_Services4: 
+    </label><input type="text" name="Specialized_Services4"/> <br>
+
+      <label for="In_House_Monitoring">In_House_Monitoring: 
+    </label><input type="text" name="In_House_Monitoring"/> <br>
+  <label for="Vital_Sign_Monitoring">Vital_Sign_Monitoring: 
+    </label><input type="text" name="Required_Info_for_Admittance8"/> <br>
+  <label for="Alzheimers_Dementia_Unit">Alzheimers_Dementia_Unit: 
+    </label><input type="text" name="Alzheimers_Dementia_Unit"/> <br>
+  <label for="Medication_Mgmt">Medication_Mgmt: 
+    </label><input type="text" name="Medication_Mgmt"/> <br>
+  <label for="Nurse_Assessment_Monitoring">Nurse_Assessment_Monitoring: 
+    </label><input type="text" name="Nurse_Assessment_Monitoring"/> <br>
+  <label for="Sitters">Sitters: 
+    </label><input type="text" name="Sitters"/> <br>
+  <label for="Office_Hours">Office_Hours: 
+    </label><input type="text" name="Office_Hours"/> <br>
+  <label for="Assistance_with_ADLs">Assistance_with_ADLs: 
+    </label><input type="text" name="Assistance_with_ADLs"/> <br>
+  <label for="In_House_Physician_Visits">In_House_Physician_Visits: 
+    </label><input type="text" name="In_House_Physician_Visits"/> <br>
+  <label for="Respite_Care">Respite_Care: 
+    </label><input type="text" name="Respite_Care"/> <br>
+  <label for="Private_Pay">Private_Pay: 
+    </label><input type="text" name="Private_Pay"/> <br>
+      <label for="Medicare">Medicare: 
+    </label><input type="text" name="Medicare"/> <br>
+  <label for="Medicaid">Medicaid: 
+    </label><input type="text" name="Medicaid"/> <br>
+  <input type="submit"/>
+  </p>
+</form>
+</body>
+</html>

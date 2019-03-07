@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>View Hospice Health</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+ 
+  <header>      
+    <nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+          <ul class="nav navbar-nav">
+            <li class="active"><a href="/">Home</a></li>
+            <li><a href="/getAllHospice">Hospice</a></li>
+            <li><a href="/getAllBehavioral">Behavioural Health</a></li>
+            <li><a href="/getAllAssistedLiving">Assisted Living</a></li>
+            <li><a href="/getAllAcute">Acute Facility</a></li> 
+            <% if (isAuthenticated) { %>  
+              <% if (!isAdmin) { %>  
+                <li><a href="/getuserInfo">User Info</a></li> 
+              <% } %>
+              <% if (isAdmin) { %>  
+              <li><a href="/getPendingUsers">User Approvals</a></li> 
+              <% } %>
+            <% } %>
+          </ul>
+          <ul>  
+              <% if (!isAuthenticated) { %>                
+            <li><a href="/getSignup"><button class="btn btn-dark pull-right">Sign Up</button></a></li>                                                 
+            <li><a a href="/getLogin"><button class="btn btn-dark pull-right">Log In</button></a></li>                
+            <% } else { %>
+            <li><a a href="/logout"><button class="btn btn-dark pull-right">Logout</button></a></li>  
+            <% } %>
+          </ul>
+        </div>
+      </nav>
+</header>
+
+ <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+          <h1 class="page-header">Acadiana Health Coalition</h1>
+          <% myHospiceInfo.forEach(function(myHospiceObj) { %>
+          <h2 class="sub-header"><%= myHospiceObj.Agency %></h2>
+          <div class="table-responsive">
+            <table class="table table-striped">
+              <thead>
+              </thead>
+              <tbody>
+                 <form method="post" action="/editpostHospicedetails">
+                  Agency Name:
+                  <input type="text" name="Agency" value="<%= myHospiceObj.Agency %>">
+                  <br>
+                  Address:
+                  <input type="text" name="Address" value="<%= myHospiceObj.Address %>">
+                  <br>
+                  City:
+                  <input type="text" name="City" value="<%= myHospiceObj.City %>"">
+                  <br>
+                  State:
+                  <input type="text" name="State" value="<%= myHospiceObj.State %>"">
+                  <br>
+                  Zip:
+                  <input type="text" name="Zip" value="<%= myHospiceObj.Zip %>"">
+                  <br>
+                  Phone_No1:
+                  <input type="text" name="Phone_No1" value="<%= myHospiceObj.Phone_No1 %>"">
+                  <br>
+                  Phone_No2:
+                  <input type="text" name="Phone_No2" value="<%= myHospiceObj.Phone_No2 %>"">
+                  <br>
+                  Administrator_Name:
+                  <input type="text" name="Administrator_Name" value="<%= myHospiceObj.Administrator_Name %>"">
+                  <br>
+                  Admin_Phone_No:
+                  <input type="text" name="Admin_Phone_No" value="<%= myHospiceObj.Admin_Phone_No %>"">
+                  <br>
+                  Admin_Email:
+                  <input type="text" name="Admin_Email" value="<%= myHospiceObj.Admin_Email %>"">
+                  <br>
+                  DON1_Name:
+                  <input type="text" name="DON1_Name" value="<%= myHospiceObj.DON1_Name %>"">
+                  <br>
+                  DON1_Phone_No:
+                  <input type="text" name="DON1_Phone_No" value="<%= myHospiceObj.DON1_Phone_No %>"">
+                  <br>
+                  DON1_Email:
+                  <input type="text" name="DON1_Email" value="<%= myHospiceObj.DON1_Email %>"">
+                  <br>
+                  DON2_Name:
+                  <input type="text" name="DON2_Name" value="<%= myHospiceObj.DON2_Name %>"">
+                  <br>
+                  Medical_Director1_Name:
+                  <input type="text" name="Medical_Director1_Name" value="<%= myHospiceObj.Medical_Director1_Name %>"">
+                  <br>
+                  Medical_Director1_Phone_No:
+                  <input type="text" name="Medical_Director1_Phone_No" value="<%= myHospiceObj.Medical_Director1_Phone_No %>"">
+                  <br>
+                  Medical_Director1_Email:
+                  <input type="text" name="Medical_Director1_Email" value="<%= myHospiceObj.Medical_Director1_Email %>"">
+                  <br>
+                  Medical_Director2_Name:
+                  <input type="text" name="Medical_Director2_Name" value="<%= myHospiceObj.Medical_Director2_Name %>"">
+                  <br>
+                  Medical_Director2_Phone_No:
+                  <input type="text" name="Medical_Director2_Phone_No" value="<%= myHospiceObj.Medical_Director2_Phone_No %>"">
+                  <br>
+                  Medical_Director2_Email:
+                  <input type="text" name="Medical_Director2_Email" value="<%= myHospiceObj.Medical_Director2_Email %>"">
+                  <br>
+                  Website:
+                  <input type="text" name="Website" value="<%= myHospiceObj.Website %>"">
+                  <br>
+                  Facility_Liaison1_Name:
+                  <input type="text" name="Facility_Liaison1_Name" value="<%= myHospiceObj.Facility_Liaison1_Name %>"">
+                  <br>
+                  Facility_Liaison1_Phone_No:
+                  <input type="text" name="Facility_Liaison1_Phone_No" value="<%= myHospiceObj.Facility_Liaison1_Phone_No %>"">
+                  <br>
+                  Facility_Liaison1_Email:
+                  <input type="text" name="Facility_Liaison1_Email" value="<%= myHospiceObj.Facility_Liaison1_Email %>"">
+                  <br>
+                  Facility_Liaison2_Name:
+                  <input type="text" name="Facility_Liaison2_Name" value="<%= myHospiceObj.Facility_Liaison2_Name %>"">
+                  <br>
+                  Facility_Liaison2_Phone_No:
+                  <input type="text" name="Facility_Liaison2_Phone_No" value="<%= myHospiceObj.Facility_Liaison2_Phone_No %>"">
+                  <br>
+                  Facility_Liaison2_Email:
+                  <input type="text" name="Facility_Liaison2_Email" value="<%= myHospiceObj.Facility_Liaison2_Email %>"">
+                  <br>
+                  Facility_Liaison3_Name:
+                  <input type="text" name="Facility_Liaison3_Name" value="<%= myHospiceObj.Facility_Liaison3_Name %>"">
+                  <br>
+                  Facility_Liaison3_Phone_No:
+                  <input type="text" name="Facility_Liaison3_Phone_No" value="<%= myHospiceObj.Facility_Liaison3_Phone_No %>"">
+                  <br>
+                  Facility_Liaison3_Email:
+                  <input type="text" name="Facility_Liaison3_Email" value="<%= myHospiceObj.Facility_Liaison3_Email %>"">
+                  <br>
+                  Accept_PCP:
+                  <input type="text" name="Accept_PCP" value="<%= myHospiceObj.Accept_PCP %>"">
+                  <br>
+                  Accept_PEC_CEC:
+                  <input type="text" name="Accept_PEC_CEC" value="<%= myHospiceObj.Accept_PEC_CEC %>"">
+                  <br>
+                  Age_criteria:
+                  <input type="text" name="Age_criteria" value="<%= myHospiceObj.Age_criteria %>"">
+                  <br>
+                  Accept_Medically_Complex_pt:
+                  <input type="text" name="Accept_Medically_Complex_pt" value="<%= myHospiceObj.Accept_Medically_Complex_pt %>"">
+                  <br>
+                  <br>
+                  <input type="submit" value="Update!">
+                  </form> 
+            <% }); %>
+              </tbody>
+            </table>
+          </div>
+        </div>
+ 
+</body>
+</html>

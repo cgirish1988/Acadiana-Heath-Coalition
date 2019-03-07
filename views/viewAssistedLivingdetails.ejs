@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>View Hospice</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <style>
+            table, th, td {
+                border: 1px solid black;
+                border-collapse: collapse;
+            }
+            th, td {
+                padding: 5px;
+                text-align: left;
+            }
+            </style>
+    </head>
+    <body>
+        <header>      
+            <nav class="navbar navbar-inverse">
+                <div class="container-fluid">
+                    <ul class="nav navbar-nav">
+                        <li class="active"><a href="/">Home</a></li>
+                        <li><a href="/getAllHospice">Hospice</a></li>                    
+                        <li><a href="/getAllBehavioral">Behavioural Health</a></li>
+                        <li><a href="/getAllAssistedLiving">Assisted Living</a></li>
+                        <li><a href="/getAllAcute">Acute Facility</a></li> 
+                        <% if (isAuthenticated) { %>  
+                          <% if (!isAdmin) { %>  
+                            <li><a href="/getuserInfo">User Info</a></li> 
+                          <% } %>
+                          <% if (isAdmin) { %>  
+                          <li><a href="/getPendingUsers">User Approvals</a></li> 
+                          <% } %>
+                        <% } %>
+                    </ul>
+                    <ul>  
+                        <% if (!isAuthenticated) { %>                
+                        <li><a href="/getSignup"><button class="btn btn-dark pull-right">Sign Up</button></a></li>                                                 
+                        <li><a a href="/getLogin"><button class="btn btn-dark pull-right">Log In</button></a></li>                
+                        <% } else { %>
+                        <li><a a href="/logout"><button class="btn btn-dark pull-right">Logout</button></a></li>  
+                        <% } %>
+                    </ul>
+                </div>
+            </nav>
+        </header>
+        
+        <main>
+                <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+                        <h1 class="page-header">Acadiana Health Coalition</h1>
+                        <% myAssistedLivingInfo.forEach(function(myAssistedLivingObj) { %> 
+                        <h2 class="sub-header"><%= myAssistedLivingObj.Agency %></h2>
+
+                        <% if (isAuthorised || isAdmin) { %> 
+                        <div>
+                            <form method="post" action="/deleteAssistedLivingdetails"> 
+                              <input type="hidden" value="<%= myAssistedLivingObj._id %>" name="agencyid"> 
+                              <input type="hidden" value="<%= myAssistedLivingObj.Agency %>" name="agency">                                 
+                              <a a href="/deleteAssistedLivingdetails"><button class="btn btn-primary pull-right">Delete</button></a>
+                            </form>
+                            <form method="post" action="/editGetAssistedLivingdetails">  
+                              <input type="hidden" value="<%= myAssistedLivingObj._id %>" name="agencyid">   
+                              <input type="hidden" value="<%= myAssistedLivingObj.Agency %>" name="Agency">                   
+                              <button class="btn btn-primary pull-right">Edit</button>
+                            </form>   
+                        </div>
+                       <% } %>
+
+                        <div class="table-responsive">
+                          <table class="table table-striped">
+                            <thead>
+                              
+                            </thead>
+                            <tbody>
+                                
+                          <table>
+                            <tr><input type="hidden" value="<%= myAssistedLivingObj._id %>" name="agencyid"></tr>
+                            <input type="hidden" value="<%= myAssistedLivingObj.Agency %>" name="Agency">
+                            <tr>
+                              <th>Address: </th>
+                              <td><%= myAssistedLivingObj.Address %></td>
+                            </tr>
+                            <tr>
+                              <th>City: </th>
+                              <td><%= myAssistedLivingObj.City %></td>
+                            </tr>
+                            <tr>
+                              <th>State: </th>
+                              <td><%= myAssistedLivingObj.State %></td>
+                            </tr>
+                            <tr>
+                              <th>Zip: </th>
+                              <td><%= myAssistedLivingObj.Zip %></td>
+                            </tr>
+                            <tr>
+                              <th>Phone_No1: </th>
+                              <td><%= myAssistedLivingObj.Phone_No1 %></td>
+                            </tr>
+                            <tr>
+                              <th>Phone_No2: </th>
+                              <td><%= myAssistedLivingObj.Phone_No2 %></td>
+                            </tr>
+                            <tr>
+                              <th>Parish: </th>
+                              <td><%= myAssistedLivingObj.Parish %></td>
+                            </tr>
+                            <tr>
+                              <th>Administrator_Name: </th>
+                              <td><%= myAssistedLivingObj.Administrator_Name %></td>
+                            </tr>
+                            <tr>
+                              <th>Admin_Phone_No: </th>
+                              <td><%= myAssistedLivingObj.Admin_Phone_No %></td>
+                            </tr>
+                            <tr>
+                              <th>Admin_Email: </th>
+                              <td><%= myAssistedLivingObj.Admin_Email %></td>
+                            </tr>
+                            <tr>
+                              <th>Wellness_Coordinator1_Name: </th>
+                              <td><%= myAssistedLivingObj.Wellness_Coordinator1_Name %></td>
+                            </tr>
+                            <tr>
+                              <th>Wellness_Coordinator1_Phone_No: </th>
+                              <td><%= myAssistedLivingObj.Wellness_Coordinator1_Phone_No %></td>
+                            </tr>
+                            <tr>
+                              <th>Wellness_Coordinator1_Email: </th>
+                              <td><%= myAssistedLivingObj.Wellness_Coordinator1_Email %></td>
+                            </tr>
+                            <tr>
+                              <th>Medical_Director1_Name: </th>
+                              <td><%= myAssistedLivingObj.Medical_Director1_Name %></td>
+                            </tr>
+                            <tr>
+                              <th>Medical_Director1_Phone_No: </th>
+                              <td><%= myAssistedLivingObj.Medical_Director1_Phone_No %></td>
+                            </tr>
+                            <tr>
+                              <th>Medical_Director1_Email: </th>
+                              <td><%= myAssistedLivingObj.Medical_Director1_Email %></td>
+                            </tr>
+                            <tr>
+                              <th>Medical_Director2_Name: </th>
+                              <td><%= myAssistedLivingObj.Medical_Director2_Name %></td>
+                            </tr>
+                            <tr>
+                              <th>Medical_Director2_Phone_No: </th>
+                              <td><%= myAssistedLivingObj.Medical_Director2_Phone_No %></td>
+                            </tr>
+                            <tr>
+                              <th>Medical_Director2_Email: </th>
+                              <td><%= myAssistedLivingObj.Medical_Director2_Email %></td>
+                            </tr>
+                            <tr>
+                              <th>DON: </th>
+                              <td><%= myAssistedLivingObj.DON %></td>
+                            </tr>
+                            <tr>
+                              <th>Website: </th>
+                              <td><%= myAssistedLivingObj.Website %></td>
+                            </tr>
+                            <tr>
+                              <th>Transportation_PlanA: </th>
+                              <td><%= myAssistedLivingObj.Transportation_PlanA %></td>
+                            </tr>
+                            <tr>
+                              <th>Transportation_PlanB: </th>
+                              <td><%= myAssistedLivingObj.Transportation_PlanB %></td>
+                            </tr>
+                            <tr>
+                              <th>Required_Info_for_Admittance1: </th>
+                              <td><%= myAssistedLivingObj.Required_Info_for_Admittance1 %></td>
+                            </tr>
+                            <tr>
+                              <th>Required_Info_for_Admittance2: </th>
+                              <td><%= myAssistedLivingObj.Required_Info_for_Admittance2 %></td>
+                            </tr>
+                            <tr>
+                              <th>Required_Info_for_Admittance3: </th>
+                              <td><%= myAssistedLivingObj.Required_Info_for_Admittance3 %></td>
+                            </tr>
+                            <tr>
+                              <th>Required_Info_for_Admittance4: </th>
+                              <td><%= myAssistedLivingObj.Required_Info_for_Admittance4 %></td>
+                            </tr>
+                            <tr>
+                              <th>Required_Info_for_Admittance5: </th>
+                              <td><%= myAssistedLivingObj.Required_Info_for_Admittance5 %></td>
+                            </tr>
+                            <tr>
+                              <th>Required_Info_for_Admittance6: </th>
+                              <td><%= myAssistedLivingObj.Required_Info_for_Admittance6 %></td>
+                            </tr>
+                            <tr>
+                              <th>Required_Info_for_Admittance7: </th>
+                              <td><%= myAssistedLivingObj.Required_Info_for_Admittance7 %></td>
+                            </tr>
+                            <tr>
+                              <th>Required_Info_for_Admittance8: </th>
+                              <td><%= myAssistedLivingObj.Required_Info_for_Admittance8 %></td>
+                            </tr>
+                            <tr>
+                              <th>Required_Info_for_Admittance9: </th>
+                              <td><%= myAssistedLivingObj.Required_Info_for_Admittance9 %></td>
+                            </tr>
+                            <tr>
+                              <th>Required_Info_for_Admittance10: </th>
+                              <td><%= myAssistedLivingObj.Required_Info_for_Admittance10 %></td>
+                            </tr>
+                            <tr>
+                              <th>Required_Info_for_Admittance11: </th>
+                              <td><%= myAssistedLivingObj.Required_Info_for_Admittance11 %></td>
+                            </tr>
+                            <tr>
+                              <th>Required_Info_for_Admittance12: </th>
+                              <td><%= myAssistedLivingObj.Required_Info_for_Admittance12 %></td>
+                            </tr>
+                            <tr>
+                              <th>Office_HoursOffice_Hours: </th>
+                              <td><%= myAssistedLivingObj.Office_HoursOffice_Hours %></td>
+                            </tr>
+                            <tr>
+                              <th>Specialized_Services: </th>
+                              <td><%= myAssistedLivingObj.Specialized_Services %></td>
+                            </tr>
+                            <tr>
+                              <th>Specialized_Services2: </th>
+                              <td><%= myAssistedLivingObj.Specialized_Services2 %></td>
+                            </tr>
+                            <tr>
+                              <th>Specialized_Services3: </th>
+                              <td><%= myAssistedLivingObj.Specialized_Services3 %></td>
+                            </tr>
+                            <tr>
+                              <th>Specialized_Services4: </th>
+                              <td><%= myAssistedLivingObj.Specialized_Services4 %></td>
+                            </tr>
+                          </table>
+                          <% }); %>
+                            </tbody>
+                          </table>
+                        </div>
+                      </div>
+        </main>
+
+        <footer class="footer">
+            <div class="container">
+                <span class="text-muted">This is footer</span>
+            </div>
+        </footer> 
+    </body>
+</html>

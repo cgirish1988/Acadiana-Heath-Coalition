@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>View Acute</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+ 
+    <header>      
+        <nav class="navbar navbar-inverse">
+            <div class="container-fluid">
+              <ul class="nav navbar-nav">
+                <li class="active"><a href="/">Home</a></li>
+                <li><a href="/getAllHospice">Hospice</a></li>
+                <li><a href="/getAllBehavioral">Behavioural Health</a></li>
+                <li><a href="/getAllAssistedLiving">Assisted Living</a></li>
+                <li><a href="/getAllAcute">Acute Facility</a></li> 
+                <% if (isAuthenticated) { %>  
+                  <% if (!isAdmin) { %>  
+                    <li><a href="/getuserInfo">User Info</a></li> 
+                  <% } %>
+                  <% if (isAdmin) { %>  
+                  <li><a href="/getPendingUsers">User Approvals</a></li> 
+                  <% } %>
+                <% } %>
+              </ul>
+              <ul>  
+                  <% if (!isAuthenticated) { %>                
+                <li><a href="/getSignup"><button class="btn btn-dark pull-right">Sign Up</button></a></li>                                                 
+                <li><a a href="/getLogin"><button class="btn btn-dark pull-right">Log In</button></a></li>                
+                <% } else { %>
+                <li><a a href="/logout"><button class="btn btn-dark pull-right">Logout</button></a></li>  
+                <% } %>
+              </ul>
+            </div>
+          </nav>
+    </header>
+
+
+<title>Add Acute</title>
+</head>
+<body>
+<h2>Enter Acute Details </h2>
+ <form method="post" action="/addAcutedetails">
+  <p>
+    <label for= "Agency">Acute Name:     
+         </label><input type="text" name="Agency"/> <br>
+  <label for="Address">Address: 
+    </label><input type="text" name="Address"/> <br>
+  <label for="City">City: 
+    </label><input type="text" name="City"/> <br>
+  <label for="State">State: 
+    </label><input type="text" name="State"/> <br>
+  <label for="Zip">Zip: 
+    </label><input type="text" name="Zip"/> <br>
+  <label for="Phone_No1">Phone_No1: 
+    </label><input type="text" name="Phone_No1"/> <br>
+  <label for="Phone_No2">Phone_No2: 
+    </label><input type="text" name="Phone_No2"/> <br>
+  <label for="Parish">Parish: 
+    </label><input type="text" name="Parish"/> <br>
+  <label for="Hosp_Info_Location1">Hosp_Info_Location1: 
+    </label><input type="text" name="Hosp_Info_Location1"/> <br>
+  <label for="Hosp_Info_Supervisor1">Hosp_Info_Supervisor1: 
+    </label><input type="text" name="Hosp_Info_Supervisor1"/> <br>
+  <label for="Hosp_Info_Phone1">Hosp_Info_Phone1: 
+    </label><input type="text" name="Hosp_Info_Phone1"/> <br>
+  <label for="Hosp_Info_Fax1">Hosp_Info_Fax1   : 
+    </label><input type="text" name="Hosp_Info_Fax1"/> <br>
+      <label for="Hosp_Info_Location2">Hosp_Info_Location2: 
+    </label><input type="text" name="Hosp_Info_Location2"/> <br>
+  <label for="Hosp_Info_Supervisor2">Hosp_Info_Supervisor2: 
+    </label><input type="text" name="Hosp_Info_Supervisor2"/> <br>
+  <label for="Hosp_Info_Phone2">Hosp_Info_Phone2: 
+    </label><input type="text" name="Hosp_Info_Phone2"/> <br>
+  <label for="Hosp_Info_Fax2">Hosp_Info_Fax2: 
+    </label><input type="text" name="Hosp_Info_Fax2"/> <br>
+      <label for="Hosp_Info_Location3">Hosp_Info_Location3: 
+    </label><input type="text" name="Hosp_Info_Location3"/> <br>
+  <label for="Hosp_Info_Supervisor3">Hosp_Info_Supervisor3: 
+    </label><input type="text" name="Hosp_Info_Supervisor3"/> <br>
+  <label for="Hosp_Info_Phone3">Hosp_Info_Phone3: 
+    </label><input type="text" name="Hosp_Info_Phone3"/> <br>
+  <label for="Hosp_Info_Fax4">Hosp_Info_Fax4: 
+    </label><input type="text" name="Hosp_Info_Fax4"/> <br>
+      <label for="Hosp_Info_Location4">Hosp_Info_Location4: 
+    </label><input type="text" name="Hosp_Info_Location4"/> <br>
+  <label for="Hosp_Info_Supervisor4">Hosp_Info_Supervisor4: 
+    </label><input type="text" name="Hosp_Info_Supervisor4"/> <br>
+  <label for="Hosp_Info_Phone4">Hosp_Info_Phone4: 
+    </label><input type="text" name="Hosp_Info_Phone4"/> <br>
+  <label for="Hosp_Info_Fax4">Hosp_Info_Fax4: 
+    </label><input type="text" name="Hosp_Info_Fax4"/> <br>
+      <label for="Hosp_Info_Location5">Hosp_Info_Location5: 
+    </label><input type="text" name="Hosp_Info_Location5"/> <br>
+  <label for="Hosp_Info_Supervisor5">Hosp_Info_Supervisor5: 
+    </label><input type="text" name="Hosp_Info_Supervisor5"/> <br>
+  <label for="Hosp_Info_Phone5">Hosp_Info_Phone5: 
+    </label><input type="text" name="Hosp_Info_Phone5"/> <br>
+  <label for="Hosp_Info_Fax5">Hosp_Info_Fax5: 
+    </label><input type="text" name="Hosp_Info_Fax5"/> <br>
+  <label for="Admin_Location1">Admin_Location1: 
+    </label><input type="text" name="Admin_Location1"/> <br>
+  <label for="Admin_Name1">Admin_Name1: 
+    </label><input type="text" name="Admin_Name1"/> <br>
+  <label for="Admin_Phone1">Admin_Phone1: 
+    </label><input type="text" name="Admin_Phone1"/> <br>
+  <label for="Admin_Fax1">Admin_Fax1: 
+    </label><input type="text" name="Admin_Fax1"/> <br>
+  <label for="Admin_Location2">Admin_Location2: 
+    </label><input type="text" name="Admin_Location2"/> <br>
+  <label for="Admin_Name2">Admin_Name2: 
+    </label><input type="text" name="Admin_Name2"/> <br>
+  <label for="Admin_Phone2">Admin_Phone2: 
+    </label><input type="text" name="Admin_Phone2"/> <br>
+  <label for="Admin_Fax2">Admin_Fax2: 
+    </label><input type="text" name="Admin_Fax2"/> <br>
+      <label for="Admin_Location3">Admin_Location3: 
+    </label><input type="text" name="Admin_Location3"/> <br>
+  <label for="Admin_Name3">Admin_Name3 
+    </label><input type="text" name="Admin_Name3"/> <br>
+  <label for="Admin_Phone3">Admin_Phone3: 
+    </label><input type="text" name="Admin_Phone3"/> <br>
+  <label for="Admin_Fax3">Admin_Fax3: 
+    </label><input type="text" name="Admin_Fax3"/> <br>
+      <label for="Admin_Location4">Admin_Location4: 
+    </label><input type="text" name="Admin_Location4"/> <br>
+  <label for="Admin_Name4">Admin_Name4: 
+    </label><input type="text" name="Admin_Name4"/> <br>
+  <label for="Admin_Phone4">Admin_Phone4: 
+    </label><input type="text" name="Admin_Phone4"/> <br>
+  <label for="Admin_Fax4">Admin_Fax4: 
+    </label><input type="text" name="Admin_Fax4"/> <br>
+      <label for="Admin_Location5">Admin_Location5: 
+    </label><input type="text" name="Admin_Location5"/> <br>
+  <label for="Admin_Name5">Admin_Name5: 
+    </label><input type="text" name="Admin_Name5"/> <br>
+  <label for="Admin_Phone5">Admin_Phone5: 
+    </label><input type="text" name="Admin_Phone5"/> <br>
+  <label for="Admin_Fax5">Admin_Fax5: 
+    </label><input type="text" name="Admin_Fax5"/> <br>
+      <label for="Case_Mgt_Dept_Location1">Case_Mgt_Dept_Location1: 
+    </label><input type="text" name="Case_Mgt_Dept_Location1"/> <br>
+  <label for="Case_Mgt_Dept_Name1">Case_Mgt_Dept_Name1: 
+    </label><input type="text" name="Case_Mgt_Dept_Name1"/> <br>
+  <label for="Case_Mgt_Dept_Phone1">Case_Mgt_Dept_Phone1: 
+    </label><input type="text" name="Case_Mgt_Dept_Phone1"/> <br>
+  <label for="Case_Mgt_Dept_Fax1">Case_Mgt_Dept_Fax1: 
+    </label><input type="text" name="Case_Mgt_Dept_Fax1"/> <br>
+      <label for="Case_Mgt_Dept_Location2">Case_Mgt_Dept_Location2: 
+    </label><input type="text" name="Case_Mgt_Dept_Location2"/> <br>
+  <label for="Case_Mgt_Dept_Name2">Case_Mgt_Dept_Name2: 
+    </label><input type="text" name="Case_Mgt_Dept_Name2"/> <br>
+  <label for="Case_Mgt_Dept_Phone2">Case_Mgt_Dept_Phone2: 
+    </label><input type="text" name="Case_Mgt_Dept_Phone2"/> <br>
+  <label for="Case_Mgt_Dept_Fax2">Case_Mgt_Dept_Fax2: 
+    </label><input type="text" name="Case_Mgt_Dept_Fax2"/> <br>
+          <label for="Case_Mgt_Dept_Location3">Case_Mgt_Dept_Location3: 
+    </label><input type="text" name="Case_Mgt_Dept_Location3"/> <br>
+  <label for="Case_Mgt_Dept_Name3">Case_Mgt_Dept_Name3: 
+    </label><input type="text" name="Case_Mgt_Dept_Name3"/> <br>
+  <label for="Case_Mgt_Dept_Phone3">Case_Mgt_Dept_Phone3: 
+    </label><input type="text" name="Case_Mgt_Dept_Phone3"/> <br>
+  <label for="Case_Mgt_Dept_Fax3">Case_Mgt_Dept_Fax3: 
+    </label><input type="text" name="Case_Mgt_Dept_Fax3"/> <br>
+          <label for="Case_Mgt_Dept_Location4">Case_Mgt_Dept_Location4: 
+    </label><input type="text" name="Case_Mgt_Dept_Location4"/> <br>
+  <label for="Case_Mgt_Dept_Name4">Case_Mgt_Dept_Name4: 
+    </label><input type="text" name="Case_Mgt_Dept_Name4"/> <br>
+  <label for="Case_Mgt_Dept_Phone4">Case_Mgt_Dept_Phone4: 
+    </label><input type="text" name="Case_Mgt_Dept_Phone4"/> <br>
+  <label for="Case_Mgt_Dept_Fax4">Case_Mgt_Dept_Fax4: 
+    </label><input type="text" name="Case_Mgt_Dept_Fax4"/> <br>
+    <label for="Facility_Serv_Emergency_Department">Facility_Serv_Emergency_Department: 
+    <input type="radio" name="Facility_Serv_Emergency_Department" value="Facility_Serv_Emergency_Department"><br>
+        <label for="Facility_Serv_Trauma_Center">Facility_Serv_Trauma_Center: 
+    <input type="radio" name="Facility_Serv_Trauma_Center" value="Facility_Serv_Trauma_Center"><br>
+        <label for="Facility_Serv_Cardiac_ICU">Facility_Serv_Cardiac_ICU: 
+    <input type="radio" name="Facility_Serv_Cardiac_ICU" value="Facility_Serv_Cardiac_ICU"><br>
+        <label for="Facility_Serv_Neurology_ICU">Facility_Serv_Neurology_ICU: 
+    <input type="radio" name="Facility_Serv_Neurology_ICU" value="Facility_Serv_Neurology_ICU"><br>
+        <label for="Facility_Serv_Surgical_ICU">Facility_Serv_Surgical_ICU: 
+    <input type="radio" name="Facility_Serv_Surgical_ICU" value="Facility_Serv_Surgical_ICU"><br>
+        <label for="Facility_Serv_Telemetry_Unit">Facility_Serv_Telemetry_Unit: 
+    <input type="radio" name="Facility_Serv_Telemetry_Unit" value="Facility_Serv_Telemetry_Unit"><br>
+        <label for="Facility_Serv_Surgery_Department">Facility_Serv_Surgery_Department: 
+    <input type="radio" name="Facility_Serv_Surgery_Department" value="Facility_Serv_Surgery_Department"><br>
+        <label for="Facility_Serv_Bariatric_Services">Facility_Serv_Bariatric_Services: 
+    <input type="radio" name="Facility_Serv_Bariatric_Services" value="Facility_Serv_Bariatric_Services"><br>
+        <label for="Facility_Serv_Hyperbaric_Unit">Facility_Serv_Hyperbaric_Unit: 
+    <input type="radio" name="Facility_Serv_Hyperbaric_Unit" value="Facility_Serv_Hyperbaric_Unit"><br>
+        <label for="Facility_Serv_Wound_Care_Clinic">Facility_Serv_Wound_Care_Clinic: 
+    <input type="radio" name="Facility_Serv_Wound_Care_Clinic" value="Facility_Serv_Wound_Care_Clinic"><br>
+        <label for="Facility_Serv_Orthopedics">Facility_Serv_Orthopedics: 
+    <input type="radio" name="Facility_Serv_Orthopedics" value="Facility_Serv_Orthopedics"><br>
+        <label for="Facility_Serv_Neurological_Services">Facility_Serv_Neurological_Services: 
+    <input type="radio" name="Facility_Serv_Neurological_Services" value="Facility_Serv_Neurological_Services"><br>
+        <label for="Facility_Serv_Oncology_Services">Facility_Serv_Oncology_Services: 
+    <input type="radio" name="Facility_Serv_Oncology_Services" value="Facility_Serv_Oncology_Services"><br>
+        <label for="Facility_Serv_Outpatient_Oncology_Services">Facility_Serv_Outpatient_Oncology_Services: 
+    <input type="radio" name="Facility_Serv_Outpatient_Oncology_Services" value="Facility_Serv_Outpatient_Oncology_Services"><br>
+        <label for="Facility_Serv_Radiation_Therapy">Facility_Serv_Radiation_Therapy: 
+    <input type="radio" name="Facility_Serv_Radiation_Therapy" value="Facility_Serv_Radiation_Therapy"><br>
+        <label for="Facility_Serv_Burn_Unit">Facility_Serv_Burn_Unit: 
+    <input type="radio" name="Facility_Serv_Burn_Unit" value="Facility_Serv_Burn_Unit"><br>
+        <label for="Facility_Serv_Outpatient_Burn_Clinic">Facility_Serv_Outpatient_Burn_Clinic: 
+    <input type="radio" name="Facility_Serv_Outpatient_Burn_Clinic" value="Facility_Serv_Outpatient_Burn_Clinic"><br>
+        <label for="Facility_Serv_Acute_Inpatient_Rehab_Unit">Facility_Serv_Acute_Inpatient_Rehab_Unit: 
+    <input type="radio" name="Facility_Serv_Acute_Inpatient_Rehab_Unit" value="Facility_Serv_Acute_Inpatient_Rehab_Unit"><br>
+        <label for="Facility_Serv_Outpatient_Physical_Therapy">Facility_Serv_Outpatient_Physical_Therapy: 
+    <input type="radio" name="Facility_Serv_Outpatient_Physical_Therapy" value="Facility_Serv_Outpatient_Physical_Therapy"><br>
+        <label for="Facility_Serv_Obstetrics_Services">Facility_Serv_Obstetrics_Services: 
+    <input type="radio" name="Facility_Serv_Obstetrics_Services" value="Facility_Serv_Obstetrics_Services"><br>
+        <label for="Facility_Serv_Gynecology_Services">Facility_Serv_Gynecology_Services: 
+    <input type="radio" name="Facility_Serv_Gynecology_Services" value="Facility_Serv_Gynecology_Services"><br>
+        <label for="Facility_Serv_Pediatrics">Facility_Serv_Pediatrics: 
+    <input type="radio" name="Facility_Serv_Pediatrics" value="Facility_Serv_Pediatrics"><br>
+        <label for="Facility_Serv_Pediatric_Trauma_Center">Facility_Serv_Pediatric_Trauma_Center: 
+    <input type="radio" name="Facility_Serv_Pediatric_Trauma_Center" value="Facility_Serv_Pediatric_Trauma_Center"><br>
+        <label for="Facility_Serv_Pediatric_ICU">Facility_Serv_Pediatric_ICU: 
+    <input type="radio" name="Facility_Serv_Pediatric_ICU" value="Facility_Serv_Pediatric_ICU"><br>
+        <label for="Facility_Serv_Neonatal_Services">Facility_Serv_Neonatal_Services: 
+    <input type="radio" name="Facility_Serv_Neonatal_Services" value="Facility_Serv_Neonatal_Services"><br>
+        <label for="Facility_Serv_Neonatal_ICU">Facility_Serv_Neonatal_ICU: 
+    <input type="radio" name="Facility_Serv_Neonatal_ICU" value="Facility_Serv_Neonatal_ICU"><br>
+        <label for="Facility_Serv_Psychiatric_Inpatient_Services">Facility_Serv_Psychiatric_Inpatient_Services: 
+    <input type="radio" name="Facility_Serv_Psychiatric_Inpatient_Services" value="Facility_Serv_Psychiatric_Inpatient_Services"><br>
+        <label for="Facility_Serv_Psychiatric_Outpatient_Services">Facility_Serv_Psychiatric_Outpatient_Services: 
+    <input type="radio" name="Facility_Serv_Psychiatric_Outpatient_Services" value="Facility_Serv_Psychiatric_Outpatient_Services"><br>
+        <label for="Facility_Serv_Outpatient_Cardiac_Rehab">Facility_Serv_Outpatient_Cardiac_Rehab: 
+    <input type="radio" name="Facility_Serv_Outpatient_Cardiac_Rehab" value="Facility_Serv_Outpatient_Cardiac_Rehab"><br>
+        <label for="Facility_Serv_Swing_Bed_SNF_Services">Facility_Serv_Swing_Bed_SNF_Services: 
+    <input type="radio" name="Facility_Serv_Swing_Bed_SNF_Services" value="Facility_Serv_Swing_Bed_SNF_Services"><br>
+  <input type="submit"/>
+  </p>
+</form>
+</body>
+</html>

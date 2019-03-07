@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>View Hospice</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <style>
+            table, th, td {
+                border: 1px solid black;
+                border-collapse: collapse;
+            }
+            th, td {
+                padding: 5px;
+                text-align: left;
+            }
+            </style>
+    </head>
+    <body>
+        <header>      
+            <nav class="navbar navbar-inverse">
+                <div class="container-fluid">
+                    <ul class="nav navbar-nav">
+                        <li class="active"><a href="/">Home</a></li>
+                        <li><a href="/getAllHospice">Hospice</a></li>                    
+                        <li><a href="/getAllBehavioral">Behavioural Health</a></li>
+                        <li><a href="/getAllAssistedLiving">Assisted Living</a></li>
+                        <li><a href="/getAllAcute">Acute Facility</a></li> 
+                        <% if (isAuthenticated) { %>  
+                          <% if (!isAdmin) { %>  
+                            <li><a href="/getuserInfo">User Info</a></li> 
+                          <% } %>
+                          <% if (isAdmin) { %>  
+                          <li><a href="/getPendingUsers">User Approvals</a></li> 
+                          <% } %>
+                        <% } %>
+                    </ul>
+                    <ul>  
+                        <% if (!isAuthenticated) { %>                
+                        <li><a href="/getSignup"><button class="btn btn-dark pull-right">Sign Up</button></a></li>                                                 
+                        <li><a a href="/getLogin"><button class="btn btn-dark pull-right">Log In</button></a></li>                
+                        <% } else { %>
+                        <li><a a href="/logout"><button class="btn btn-dark pull-right">Logout</button></a></li>  
+                        <% } %>
+                    </ul>
+                </div>
+            </nav>
+        </header>
+        
+        <main>
+            <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+                <h1 class="page-header">Acadiana Health Coalition</h1>
+                        <% myHospiceInfo.forEach(function(myHospiceObj) { %>
+
+                          
+
+                        <h2 class="sub-header"><%= myHospiceObj.Agency %></h2>
+
+                        <% if (isAuthorised || isAdmin) { %> 
+                          <div>
+                              <form method="post" action="/deleteHospicedetails"> 
+                                <input type="hidden" value="<%= myHospiceObj.Agency %>" name="agency">  
+                                <input type="hidden" value="<%= myHospiceObj._id %>" name="agencyid">                                  
+                                <a a href="/deleteHospicedetails"><button class="btn btn-primary pull-right">Delete</button></a>
+                              </form>
+                              <form method="post" action="/editGetHospicedetails">  
+                                <input type="hidden" value="<%= myHospiceObj._id %>" name="agencyid">   
+                                <input type="hidden" value="<%= myHospiceObj.Agency %>" name="Agency">                   
+                                <button class="btn btn-primary pull-right">Edit</button>
+                              </form>   
+                          </div>
+                         <% } %>
+
+
+                        <div class="table-responsive">
+                          <table class="table table-striped">
+                            <thead>
+                              
+                            </thead>
+                            <tbody>
+                                
+                          <table>
+                              <tr><input type="hidden" value="<%= myHospiceObj._id %>" name="agencyid"></tr>
+                            <tr>
+                              <th>Address: </th>
+                              <td><%= myHospiceObj.Address %></td>
+                            </tr>
+                            <tr>
+                              <th>City: </th>
+                              <td><%= myHospiceObj.City %></td>
+                            </tr>
+                            <tr>
+                              <th>State: </th>
+                              <td><%= myHospiceObj.State %></td>
+                            </tr>
+                            <tr>
+                              <th>Zip: </th>
+                              <td><%= myHospiceObj.Zip %></td>
+                            </tr>
+                            <tr>
+                              <th>Phone_No1: </th>
+                              <td><%= myHospiceObj.Phone_No1 %></td>
+                            </tr>
+                            <tr>
+                              <th>Phone_No2: </th>
+                              <td><%= myHospiceObj.Phone_No2 %></td>
+                            </tr>
+                            <tr>
+                              <th>Parish: </th>
+                              <td><%= myHospiceObj.Parish %></td>
+                            </tr>
+                            <tr>
+                              <th>Administrator_Name: </th>
+                              <td><%= myHospiceObj.Administrator_Name %></td>
+                            </tr>
+                            <tr>
+                              <th>Admin_Phone_No: </th>
+                              <td><%= myHospiceObj.Admin_Phone_No %></td>
+                            </tr>
+                            <tr>
+                              <th>Admin_Email: </th>
+                              <td><%= myHospiceObj.Admin_Email %></td>
+                            </tr>
+                            <tr>
+                              <th>DON1_Name: </th>
+                              <td><%= myHospiceObj.DON1_Name %></td>
+                            </tr>
+                            <tr>
+                              <th>DON1_Phone_No: </th>
+                              <td><%= myHospiceObj.DON1_Phone_No %></td>
+                            </tr>
+                            <tr>
+                              <th>DON1_Email: </th>
+                              <td><%= myHospiceObj.DON1_Email %></td>
+                            </tr>
+                            <tr>
+                              <th>DON2_Name: </th>
+                              <td><%= myHospiceObj.DON2_Name %></td>
+                            </tr>
+                            <tr>
+                              <th>Medical_Director1_Name: </th>
+                              <td><%= myHospiceObj.Medical_Director1_Name %></td>
+                            </tr>
+                            <tr>
+                              <th>Medical_Director1_Phone_No: </th>
+                              <td><%= myHospiceObj.Medical_Director1_Phone_No %></td>
+                            </tr>
+                            <tr>
+                              <th>Medical_Director1_Email: </th>
+                              <td><%= myHospiceObj.Medical_Director1_Email %></td>
+                            </tr>
+                            <tr>
+                              <th>Medical_Director2_Name: </th>
+                              <td><%= myHospiceObj.Medical_Director2_Name %></td>
+                            </tr>
+                            <tr>
+                              <th>Medical_Director2_Phone_No: </th>
+                              <td><%= myHospiceObj.Medical_Director2_Phone_No %></td>
+                            </tr>
+                            <tr>
+                              <th>Medical_Director2_Email: </th>
+                              <td><%= myHospiceObj.Medical_Director2_Email %></td>
+                            </tr>
+                            <tr>
+                              <th>Website: </th>
+                              <td><%= myHospiceObj.Website %></td>
+                            </tr>
+                            <tr>
+                              <th>Facility_Liaison1_Name: </th>
+                              <td><%= myHospiceObj.Facility_Liaison1_Name %></td>
+                            </tr>
+                            <tr>
+                              <th>Facility_Liaison1_Phone_No: </th>
+                              <td><%= myHospiceObj.Facility_Liaison1_Phone_No %></td>
+                            </tr>
+                            <tr>
+                              <th>Facility_Liaison1_Email: </th>
+                              <td><%= myHospiceObj.Facility_Liaison1_Email %></td>
+                            </tr>
+                            <tr>
+                              <th>Facility_Liaison2_Name: </th>
+                              <td><%= myHospiceObj.Facility_Liaison2_Name %></td>
+                            </tr>
+                            <tr>
+                              <th>Facility_Liaison2_Phone_No: </th>
+                              <td><%= myHospiceObj.Facility_Liaison2_Phone_No %></td>
+                            </tr>
+                            <tr>
+                              <th>Facility_Liaison2_Email: </th>
+                              <td><%= myHospiceObj.Facility_Liaison2_Email %></td>
+                            </tr>
+                            <tr>
+                              <th>Facility_Liaison3_Name: </th>
+                              <td><%= myHospiceObj.Facility_Liaison3_Name %></td>
+                            </tr>
+                            <tr>
+                              <th>Facility_Liaison3_Phone_No: </th>
+                              <td><%= myHospiceObj.Facility_Liaison3_Phone_No %></td>
+                            </tr>
+                            <tr>
+                              <th>Facility_Liaison3_Email: </th>
+                              <td><%= myHospiceObj.Facility_Liaison3_Email %></td>
+                            </tr>
+                            <tr>
+                              <th>Accept_PCP: </th>
+                              <td><%= myHospiceObj.Accept_PCP %></td>
+                            </tr>
+                            <tr>
+                              <th>Accept_PEC_CEC: </th>
+                              <td><%= myHospiceObj.Accept_PEC_CEC %></td>
+                            </tr>
+                            <tr>
+                              <th>Age_criteria: </th>
+                              <td><%= myHospiceObj.Age_criteria %></td>
+                            </tr>
+                            <tr>
+                              <th>Accept_Medically_Complex_pt: </th>
+                              <td><%= myHospiceObj.Accept_Medically_Complex_pt %></td>
+                            </tr>
+                            <tr>
+                              <th>Aetna: </th>
+                              <td><%= myHospiceObj.Aetna %></td>
+                            </tr>
+                          </table>
+                          <% }); %>
+                            </tbody>
+                          </table>
+                        </div>
+                      </div>
+
+        </main>
+
+        <footer class="footer">
+            <div class="container">
+                <span class="text-muted">This is footer</span>
+            </div>
+        </footer> 
+    </body>
+</html>

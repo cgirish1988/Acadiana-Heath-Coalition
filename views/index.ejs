@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title><%= pageTitle %></title>
+    <meta charset="utf-8">
+    	<meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link href="../node_modules/bootstrap/dist/css/bootstrap.min.css" >
+    <link href="../node_modules/bootstrap/dist/js/bootstrap.min.js" >    
+  </head>
+
+  <body>
+    <header>      
+        <nav class="navbar navbar-inverse">
+            <div class="container-fluid">
+              <ul class="nav navbar-nav">
+                <li class="active"><a href="/">Home</a></li>
+                <li><a href="/getAllHospice">Hospice</a></li>
+                <li><a href="/getAllBehavioral">Behavioural Health</a></li>
+                <li><a href="/getAllAssistedLiving">Assisted Living</a></li>
+                <li><a href="/getAllAcute">Acute Facility</a></li> 
+                <% if (isAuthenticated) { %>  
+                  <% if (!isAdmin) { %>  
+                    <li><a href="/getuserInfo">User Info</a></li> 
+                  <% } %>
+                  <% if (isAdmin) { %>  
+                  <li><a href="/getPendingUsers">User Approvals</a></li> 
+                  <% } %>
+                <% } %>
+              </ul>
+              <ul>  
+                  <% if (!isAuthenticated) { %>                
+                <li><a href="/getSignup"><button class="btn btn-dark pull-right">Sign Up</button></a></li>                                                 
+                <li><a a href="/getLogin"><button class="btn btn-dark pull-right">Log In</button></a></li>                
+                <% } else { %>
+                <li><a a href="/logout"><button class="btn btn-dark pull-right">Logout</button></a></li>  
+                <% } %>
+              </ul>
+            </div>
+          </nav>
+    </header>
+
+    <!-- Begin page content -->
+    <main role="main" class="container">                        
+            <div class="jumbotron text-center">
+              <h1>Acadiana Health Coalition</h1>  
+                          
+            </div>            
+    </main>
+
+    <footer class="footer">
+      <div class="container">
+        <span class="text-muted">This is footer</span>
+      </div>
+    </footer> 
+
+  </body>
+</html>
